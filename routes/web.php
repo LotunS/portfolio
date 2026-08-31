@@ -9,6 +9,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\GitHubImportController;
+
 // Public portfolio
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -52,6 +54,15 @@ Route::middleware('auth')
             ->name('dashboard');
 
         Route::resource('projects', AdminProjectController::class);
+
+        Route::get('/github/import', [GitHubImportController::class, 'index'])
+            ->name('github.import');
+
+        Route::get('/github/import/{repository}', [GitHubImportController::class, 'select'])
+            ->name('github.select');
     });
+
+
+
 
 require __DIR__ . '/auth.php';

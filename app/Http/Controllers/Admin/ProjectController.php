@@ -8,6 +8,7 @@ use App\Models\Project;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -26,9 +27,19 @@ class ProjectController extends Controller
      */
     public function create(): View
     {
-        return view('admin.projects.create');
-    }
+        $githubRepository = session('github_repository');
 
+        $project = new Project();
+
+        if ($githubRepository) {
+            $project->title = $githubRepository['name'];
+            $project->slug = Str::slug($githubRepository['name']);
+            $project->short_description = $githubRepository['description'] ?? '';
+            $project->github_url = $githubRepository['html_url'];
+        }
+
+        return view('admin.projects.create', compact('project'));
+    }
     /**
      * Store a newly created resource in storage.
      */

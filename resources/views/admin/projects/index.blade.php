@@ -4,18 +4,18 @@
 
 @section('content')
 
-<div class="flex items-center justify-between mb-6">
+<div class="mb-6 flex items-start justify-between">
     <div>
-        <h1 class="text-2xl font-bold">Projects</h1>
-        <p class="text-gray-500 mt-1">
-            Manage your portfolio projects.
+        <h1 class="text-2xl font-bold">Add Project</h1>
+        <p class="mt-1 text-gray-500">
+            Add a new project to your portfolio.
         </p>
     </div>
 
     <a
-        href="{{ route('admin.projects.create') }}"
-        class="rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800">
-        Add Project
+        href="{{ route('admin.github.import') }}"
+        class="rounded-lg border px-5 py-2.5 text-sm font-medium hover:bg-gray-50">
+        Import from GitHub
     </a>
 </div>
 
@@ -75,8 +75,7 @@
                         <form
                             method="POST"
                             action="{{ route('admin.projects.destroy', $project) }}"
-                            class="delete-project-form"
-                            >
+                            class="delete-project-form">
                             @csrf
                             @method('DELETE')
 
@@ -112,7 +111,7 @@
 @push('scripts')
 <script>
     document.querySelectorAll('.delete-project-form').forEach(form => {
-        form.addEventListener('submit', function (event) {
+        form.addEventListener('submit', function(event) {
             event.preventDefault();
 
             Swal.fire({
