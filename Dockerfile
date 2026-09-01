@@ -23,6 +23,8 @@ RUN npm ci
 
 RUN npm run build
 
+RUN php artisan storage:link
+
 RUN php artisan config:clear \
     && php artisan route:clear \
     && php artisan view:clear \
