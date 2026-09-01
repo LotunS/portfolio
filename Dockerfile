@@ -1,4 +1,4 @@
-```dockerfile
+dockerfile
 FROM php:8.3-cli
 
 WORKDIR /var/www/html
@@ -34,4 +34,3 @@ RUN php artisan config:clear \
 EXPOSE 10000
 
 CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-10000}"]
-```
