@@ -24,7 +24,7 @@ class ContactController extends Controller
             'message' => ['required', 'string', 'max:5000'],
         ]);
 
-        Mail::to(config('mail.from.address'))
+        Mail::to(config('mail.contact_email'))
             ->send(new ContactMessage($validated));
 
         return redirect()

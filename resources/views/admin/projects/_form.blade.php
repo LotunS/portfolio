@@ -117,7 +117,7 @@
 
     @if (!empty($project?->thumbnail))
     <img
-        src="{{ asset('storage/' . $project->thumbnail) }}"
+        src="{{ $project->thumbnail }}"
         alt="{{ $project->title }}"
         class="mt-4 h-32 w-auto rounded-lg object-cover">
     @endif

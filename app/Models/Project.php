@@ -18,6 +18,7 @@ class Project extends Model
         'short_description',
         'description',
         'thumbnail',
+        'pixelvault_id',
         'github_url',
         'live_url',
         'featured',

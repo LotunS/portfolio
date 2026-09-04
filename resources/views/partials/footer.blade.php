@@ -13,21 +13,30 @@
         <div class="mt-6 flex justify-center gap-5">
 
             <a
-                href="#"
+                href="https://github.com/LotunS"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
                 class="text-gray-400 transition hover:text-white">
                 <i data-lucide="github" class="h-5 w-5"></i>
-            </a>
+            </a>F
 
             <a
-                href="#"
+                href="www.linkedin.com/in/miloud-saad-abd-ali-a624a833b"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 class="text-gray-400 transition hover:text-white">
                 <i data-lucide="linkedin" class="h-5 w-5"></i>
+            </a>
+
+            <a
+                href="https://www.instagram.com/m.saadcode/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                class="text-gray-400 transition hover:text-white">
+                <i data-lucide="instagram" class="h-5 w-5"></i>
             </a>
 
             <a

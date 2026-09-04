@@ -13,9 +13,15 @@
     </x-section-title>
 
     <p class="max-w-3xl text-lg leading-8 text-gray-600">
-        I'm a web developer specializing in Laravel and PHP.
-        I build scalable web applications with clean architecture,
-        maintainable code, and modern technologies.
+        I have been passionate about programming since childhood, started my development journey while I was still in school.
+        My university background is only part of what I've learned over the years,
+        with experience across several areas of software development.
+        - Web development with PHP and Laravel
+        - Desktop application development with C++ and C#
+        - Game development with Godot and Unity
+        - Mobile application development with Dart and Flutter
+        - Database development with MySQL
+        - Version control with Git
     </p>
 
     <div class="mt-16">
@@ -26,23 +32,35 @@
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 
             <x-skill-card icon="file-code-2" title="PHP">
-                Backend development with clean, maintainable code.
+                Proficient in clean backend development.
             </x-skill-card>
 
-            <x-skill-card icon="box" title="Laravel">
-                MVC architecture, authentication, routing and Eloquent ORM.
-            </x-skill-card>
-
-            <x-skill-card icon="database" title="MySQL">
-                Relational database design and optimization.
+            <x-skill-card icon="code" title="HTML/CSS">
+                Structured and responsive frontend development.
             </x-skill-card>
 
             <x-skill-card icon="code-2" title="JavaScript">
-                Interactive and dynamic user interfaces.
+                For General-purpose, also dynamic user interfaces.
             </x-skill-card>
 
-            <x-skill-card icon="code" title="HTML & CSS">
-                Responsive layouts and accessible interfaces.
+            <x-skill-card icon="box" title="Laravel">
+                MVC architecture, authentication, routing, and ORM.
+            </x-skill-card>
+
+            <x-skill-card icon="database" title="MySQL">
+                Database design, queries, and management.
+            </x-skill-card>
+
+            <x-skill-card icon="terminal" title="Desktop Development">
+                Desktop apps development with C++ and C#.
+            </x-skill-card>
+
+            <x-skill-card icon="smartphone" title="Mobile Development">
+                Mobile application development with Fluter.
+            </x-skill-card>
+
+            <x-skill-card icon="gamepad-2" title="Game Development">
+                Game development with Unity and Godot using C# and GDScript.
             </x-skill-card>
 
             <x-skill-card icon="git-branch" title="Git">

@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
 
 class ProjectController extends Controller
 {
@@ -58,10 +58,20 @@ class ProjectController extends Controller
         ]);
 
         if ($request->hasFile('thumbnail')) {
-            $validated['thumbnail'] = $request->file('thumbnail')->store(
-                'projects',
-                'public'
-            );
+            $response = Http::withToken(config('services.pixelvault.api_key'))
+                ->attach(
+                    'file',
+                    file_get_contents($request->file('thumbnail')->getRealPath()),
+                    $request->file('thumbnail')->getClientOriginalName()
+                )
+                ->post('https://api.pixelvault.dev/v1/images');
+
+            $response->throw();
+
+            $upload = $response->json('data');
+
+            $validated['thumbnail'] = $upload['url'];
+            $validated['pixelvault_id'] = $upload['id'];
         }
 
         $validated['featured'] = $request->boolean('featured');
@@ -112,15 +122,29 @@ class ProjectController extends Controller
         ]);
 
         if ($request->hasFile('thumbnail')) {
-            $oldThumbnail = $project->thumbnail;
+            $oldPixelvaultId = $project->pixelvault_id;
 
-            $validated['thumbnail'] = $request->file('thumbnail')->store(
-                'projects',
-                'public'
-            );
+            $response = Http::withToken(config('services.pixelvault.api_key'))
+                ->attach(
+                    'file',
+                    file_get_contents($request->file('thumbnail')->getRealPath()),
+                    $request->file('thumbnail')->getClientOriginalName()
+                )
+                ->post('https://api.pixelvault.dev/v1/images');
 
-            if ($oldThumbnail) {
-                Storage::disk('public')->delete($oldThumbnail);
+            $response->throw();
+
+            $upload = $response->json('data');
+
+            $validated['thumbnail'] = $upload['url'];
+            $validated['pixelvault_id'] = $upload['id'];
+
+            if ($oldPixelvaultId) {
+                Http::withToken(config('services.pixelvault.api_key'))
+                    ->delete(
+                        "https://api.pixelvault.dev/v1/images/{$oldPixelvaultId}"
+                    )
+                    ->throw();
             }
         }
 
@@ -138,8 +162,12 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project): RedirectResponse
     {
-        if ($project->thumbnail) {
-            Storage::disk('public')->delete($project->thumbnail);
+        if ($project->pixelvault_id) {
+            Http::withToken(config('services.pixelvault.api_key'))
+                ->delete(
+                    "https://api.pixelvault.dev/v1/images/{$project->pixelvault_id}"
+                )
+                ->throw();
         }
 
         $project->delete();

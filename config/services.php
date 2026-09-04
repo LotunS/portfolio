@@ -40,4 +40,8 @@ return [
         'username' => env('GITHUB_USERNAME'),
     ],
 
+    'pixelvault' => [
+        'api_key' => env('PIXELVAULT_API_KEY'),
+    ],
+
 ];

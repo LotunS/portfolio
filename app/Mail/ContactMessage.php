@@ -28,6 +28,7 @@ class ContactMessage extends Mailable
     {
         return new Envelope(
             subject: 'Portfolio Contact: ' . $this->data['subject'],
+            replyTo: [$this->data['email']],
         );
     }
 

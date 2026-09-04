@@ -45,7 +45,7 @@
                 <td class="px-6 py-4">
                     @if ($project->thumbnail)
                     <img
-                        src="{{ asset('storage/' . $project->thumbnail) }}"
+                        src="{{ $project->thumbnail }}"
                         alt="{{ $project->title }}"
                         class="h-16 w-24 rounded-lg object-cover">
                     @else

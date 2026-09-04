@@ -4,17 +4,16 @@
 
     @if ($project->thumbnail)
 
-        <img
-            src="{{ asset('storage/' . $project->thumbnail) }}"
-            alt="{{ $project->title }}"
-            class="h-48 w-full object-cover"
-        >
+    <img
+        src="{{ $project->thumbnail }}"
+        alt="{{ $project->title }}"
+        class="h-48 w-full object-cover">
 
     @else
 
-        <div class="flex h-48 items-center justify-center bg-gray-100 text-gray-400">
-            <i data-lucide="image" class="h-10 w-10"></i>
-        </div>
+    <div class="flex h-48 items-center justify-center bg-gray-100 text-gray-400">
+        <i data-lucide="image" class="h-10 w-10"></i>
+    </div>
 
     @endif
 
@@ -30,8 +29,7 @@
 
         <a
             href="{{ route('projects.show', $project) }}"
-            class="mt-6 inline-flex self-start rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700"
-        >
+            class="mt-6 inline-flex self-start rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700">
             View Project
         </a>
 
